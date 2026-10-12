@@ -4,6 +4,8 @@ import './App.css';
 import { SearchBar } from './komponentit/SearchBar';
 
 
+
+
 function App() {
   const [results, setResults] = useState(null);
 
@@ -14,17 +16,16 @@ function App() {
         
         {/* Näytetään säätiedot, jos niitä on haettu */}
         <div className="search-results">
-          {results && results.current ? (
-            <div className="weather-info">
-              <h2>{results.location.name}, {results.location.country}</h2>
-              <p>Lämpötila: {results.current.temperature}°C</p>
-              <p>Säätila: {results.current.weather_descriptions[0]}</p>
-              <p>Tuuli: {results.current.wind_speed} km/h</p>
-              <p>Kosteus: {results.current.humidity}%</p>
+          {results ? (
+            <div className="poke-info" id="poke-info">
+              <h2>{results.name}</h2>
+              <p>Height: {results.height}0cm</p>
+              <p>Weight: {results.weight}kg</p>
+              <p>Ability: {results.abilities[0].ability.name}</p>
+              <p>Base Experience: {results.base_experience}XP</p>
+              <p>Move: {results.moves[0].move.name}</p>
             </div>
-          ) : results && results.success === false ? (
-            <p className="error-message">Kaupunkia ei löytynyt.</p>
-          ) : (
+          ) :  (
             <div>SearchResults</div>
           )}
         </div>

@@ -6,7 +6,7 @@ export const SearchBar = ({setResults}) => {
     const [input, setInput] = useState("");
 
     const fetchData = async (value) => {
-        const response = await fetch(`http://api.weatherstack.com/current?access_key=4a0d1f77217d0c310e7d570d880a7463&query=${value}`);
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${value}`);
         const data = await response.json();
         console.log(data);
         setResults(data);
@@ -21,10 +21,10 @@ export const SearchBar = ({setResults}) => {
 
     return (
         <form onSubmit={handleSubmit} className="input-wrapper">
-            <FaSearch className="search-icon" />
+            <FaSearch id="search-icon" className="search-icon" />
             <input
                 type="text"
-                placeholder="Kirjoita kaupunki..."
+                placeholder="Kirjoita Pokemonin nimi..."
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
             />

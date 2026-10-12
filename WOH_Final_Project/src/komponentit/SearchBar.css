@@ -25,3 +25,9 @@ input:focus {
 #search-icon {
     color: royalblue;
 }
+
+#search-results {
+    margin-top: 20px;
+    text-align: center;
+    color: gold;
+}

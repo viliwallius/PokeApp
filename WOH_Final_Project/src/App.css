@@ -13,3 +13,8 @@
   align-items: center;
   min-width: 200px;
 }
+
+#poke-info {
+  color: rgb(248, 132, 167);
+  text-align: left;
+}
