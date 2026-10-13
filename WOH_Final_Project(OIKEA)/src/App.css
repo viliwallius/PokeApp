@@ -1,0 +1,35 @@
+.App {
+  background-color: #FFCB05;
+  height: 100vh;
+  width: 100vw;
+}
+
+#clear-results {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: royalblue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-bar-container {
+  padding-top: 20vh;
+  width: 40%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 200px;
+}
+
+#poke-info {
+  color: #3466AF;
+  text-align: left;
+}
+
+#navbarNav {
+  display: flex;
+  gap: 20px;
+}

@@ -2,16 +2,31 @@ import React, {useState} from 'react';
 import {FaSearch} from 'react-icons/fa';
 import './SearchBar.css';
 
-export const SearchBar = ({setResults}) => {
+export const SearchBar = ({ setResults, setError, addToHistory }) => {
     const [input, setInput] = useState("");
 
     const fetchData = async (value) => {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${value}`);
-        const data = await response.json();
-        console.log(data);
-        setResults(data);
-    };
+        try {
+            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${value.toLowerCase().trim()}`);
+            
+            // Tarkistetaan, jos vastaus ei onnistunut.
+            if (!response.ok) {
+                throw new Error("Pokémonia ei löytynyt!");
+            }
 
+            const data = await response.json();
+            setResults(data);
+            setError(null);
+            
+            if (addToHistory) {
+                addToHistory(data.name);
+            }
+
+        } catch (err) {
+            setResults(null); 
+            setError(err.message); 
+        }
+    };
     const handleSubmit = (e) => {
         e.preventDefault();
         if (input.trim() !== "") {
