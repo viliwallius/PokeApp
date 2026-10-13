@@ -23,16 +23,26 @@ function App() {
     });
   };
 
+  const [activeBackground, setActiveBackground] = useState(null);
+
   return (
-  
   <Router>
-    <div className="App">
+    <div 
+    className="App"
+    style={{
+    backgroundImage: activeBackground
+      ? `url('${activeBackground}')`
+      : 'none',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    minHeight: '100vh'
+  }}>
       {/* Navigointivalikko */}
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary px-3 mb-4">
           <div className="navbar-nav flex-row gap-3">
             <Link className="nav-link text-white" to="/">Etusivu</Link>
             <Link className="nav-link text-white" to="/history">Historia</Link>
-            <Link className="nav-link text-white" to="/settings">Asetukset</Link>
+            <Link className="nav-link text-white" to="/asetukset">Asetukset</Link>
           </div>
         </nav>
 
@@ -64,7 +74,7 @@ function App() {
           {/* Historia-sivu */}
           <Route path="/history" element={<History history={history} />} />
           {/* Asetukset-sivu */}
-          <Route path="/settings" element={<Asetukset />} />
+          <Route path="/asetukset" element={<Asetukset setActiveBackground={setActiveBackground} />} />
         </Routes>
         </div>
     </Router>
