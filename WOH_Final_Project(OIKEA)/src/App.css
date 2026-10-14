@@ -24,11 +24,6 @@
   min-width: 200px;
 }
 
-#poke-info {
-  color: #3466AF;
-  text-align: left;
-}
-
 #navbarNav {
   display: flex;
   gap: 20px;

@@ -5,6 +5,7 @@ import './SearchBar.css';
 export const SearchBar = ({ setResults, setError, addToHistory }) => {
     const [input, setInput] = useState("");
 
+    {/* Funktio Pokemonin tietojen hakemiseen API:sta */}
     const fetchData = async (value) => {
         try {
             const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${value.toLowerCase().trim()}`);
@@ -34,6 +35,7 @@ export const SearchBar = ({ setResults, setError, addToHistory }) => {
         }
     };
 
+    {/* Koodi hakupalkille ja hae-napille */}
     return (
         <form onSubmit={handleSubmit} className="input-wrapper">
             <FaSearch id="search-icon" className="search-icon" />

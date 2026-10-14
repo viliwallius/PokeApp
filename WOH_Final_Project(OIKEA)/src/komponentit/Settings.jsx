@@ -4,6 +4,7 @@ export const Asetukset = ({ setActiveBackground }) => {
       <h2>Asetukset</h2>
       <p>Vaihda taustakuva</p>
       <div className="d-flex gap-2 mb-3">
+        {/* Napit taustakuvien vaihtamiseen */}
       <button className="btn btn-primary" onClick={() => setActiveBackground('https://wallpapercave.com/wp/wp7015609.png')}>
         Pikachu
       </button>

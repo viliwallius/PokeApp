@@ -1,7 +1,8 @@
 import {useState} from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import logo1 from './assets/logo1.png';
 import { History } from './komponentit/History';
 import { Asetukset } from './komponentit/Settings';
 import { SearchBar } from './komponentit/SearchBar';
@@ -14,6 +15,7 @@ function App() {
   const [error, setError] = useState(null);
   const [history, setHistory] = useState([]);
 
+  {/* Funktio Pokemonin nimen lisäämiseen historiaan*/}
   const addToHistory = (pokemonName) => {
     setHistory((prevHistory) => {
       if (!prevHistory.includes(pokemonName)) {
@@ -23,6 +25,7 @@ function App() {
     });
   };
 
+  {/* Funktio tauskauvan kuvan asettamiseen */}
   const [activeBackground, setActiveBackground] = useState(null);
 
   return (
@@ -49,27 +52,33 @@ function App() {
         <Routes>
           {/* Etusivu */}
           <Route path="/" element={
-            <div className="search-bar-container mt-4">
+            <div>
+            <div className="text-center mt-4">
+              <img src={logo1} alt="Logo" style={{ width: '350px', height: 'auto', marginTop: '0px'}} />
+            </div>
+            <div className="search-bar-container " style={{ marginTop: '-200px', textAlign: 'center' }}>
               <SearchBar setResults={setResults} setError={setError} addToHistory={addToHistory} />
               <button id="clear-results" onClick={() => setResults(null)} className="btn btn-secondary mt-2">Tyhjennä</button>
               {error && <p className="error-message" style={{ color: 'red' }}>{error}</p>}
-              
+        
+              {/* Näytetään Pokemonin tiedot, jos niitä on */ }
               <div className="search-results mt-3">
                 {results ? (
-                  <div className="poke-info" id="poke-info">
-                    <h2>{results.name}</h2>
-                    <img src={results.sprites.front_default} alt={results.name} />
-                    <p><strong>Height: </strong>{results.height}0cm</p>
-                    <p><strong>Weight: </strong>{results.weight}kg</p>
-                    <p><strong>Ability: </strong>{results.abilities[0].ability.name}</p>
-                    <p><strong>Base Experience: </strong>{results.base_experience}XP</p>
-                    <p><strong>Move: </strong>{results.moves[0].move.name}</p>
+                  <div className="card p-4 bg-white text-dark mx-auto rounded-4" id="poke-info" style={{ maxWidth: '350px'}}>
+                    <h2 className="text-capitalize">{results.name}</h2>
+                    <img src={results.sprites.front_default} alt={results.name} className="mx-auto d-block" style={{width: '120px'}}/>
+                    <p className="mb-2"><strong>Height: </strong>{results.height}0cm</p>
+                    <p className="mb-2"><strong>Weight: </strong>{results.weight}kg</p>
+                    <p className="mb-2"><strong>Ability: </strong>{results.abilities[0].ability.name}</p>
+                    <p className="mb-2"><strong>Base Experience: </strong>{results.base_experience}XP</p>
+                    <p className="mb-2"><strong>Move: </strong>{results.moves[0].move.name}</p>
                   </div>
                 ) : !error && (
-                  <div>SearchResults</div>
+                  <p></p>
                 )}
               </div>
             </div>
+          </div>
           } />
           {/* Historia-sivu */}
           <Route path="/history" element={<History history={history} />} />

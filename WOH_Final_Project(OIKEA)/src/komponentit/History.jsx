@@ -1,5 +1,6 @@
 import React from 'react';
 
+{/* Komponentti hakuhistorian näyttämiseen */}
 export const History = ({ history }) => {
     return (
         <div className="container py-4">
