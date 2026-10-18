@@ -1,7 +1,7 @@
 Projektin ajaminen Windowsilla
 ------------------
 
-1. Pura ZIP-tiedosto Wallius_Vili_final-project
+1. Pura ZIP-tiedosto PokeApp-main
 
 2. Mene kansioon WOH_Final_Project(OIKEA) -> klikkaa hiiren oikealla tyhjää kohtaa kansiossa ja valitse "Avaa päätteessä"
 
